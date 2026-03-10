@@ -4,6 +4,7 @@ import ArtworkCard from "./components/ArtworkCard";
 import ArtworkModal from "./components/ArtworkModal";
 import { INITIAL_ARTWORKS } from "./constants";
 import { Artwork, Category } from "./types";
+import profileImage from "./src/assets/img_profile/Profile_artist_img.jpg";
 
 const App: React.FC = () => {
   const [artworks, setArtworks] = useState<Artwork[]>(INITIAL_ARTWORKS);
@@ -34,9 +35,9 @@ const App: React.FC = () => {
             {/* 보이지 않는 것을 <span className="italic">담다</span> */}
             <span className="italic">‘ 자연공감 ’</span>
           </h1>
-          {/* <p className="text-2xl md:text-4xl font-bold mb-8 serif tracking-tight">
-            자연 속에서 나의 존재가치를 찾다
-          </p> */}
+          <p className="text-2xl md:text-4xl font-bold mb-8 serif tracking-tight">
+            Art is recreation of nature(reality)
+          </p>
           <p className="max-w-2xl text-gray-500 text-lg leading-relaxed mb-12 font-light">
             자연 속에서 나의 존재가치를 찾다. 자연과 하나의 세계가 되어 느끼게
             되는 교감과 감성을 작품으로 재창조해 나가는 것, 그것이 바로
@@ -74,7 +75,7 @@ const App: React.FC = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
                 <div className="relative">
                   <img
-                    src="\img_profile\Profile_artist_img.jpg"
+                    src={profileImage}
                     alt="작가 안선영"
                     className="w-full grayscale hover:grayscale-0 transition-all duration-1000 shadow-2xl rounded-sm"
                   />

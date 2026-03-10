@@ -1,12 +1,12 @@
 import { Artwork, Category } from "./types";
 
 // img_Art 폴더의 모든 이미지 파일을 가져와 배열로 자동 생성
-const imageModules = import.meta.glob("./img_art/*.{jpg,jpeg,png,webp,gif}", {
+const imageModules = import.meta.glob("./src/assets/img_art/*.{jpg,jpeg,png,webp,gif}", {
   eager: true,
 }) as Record<string, { default: string }>;
 
 // img_Art 폴더의 메타데이터 JSON 파일 로드
-const metadataModules = import.meta.glob("./img_art/*.json", {
+const metadataModules = import.meta.glob("./src/assets/img_art/*.json", {
   eager: true,
 }) as Record<string, { default: Record<string, any> }>;
 
@@ -15,15 +15,27 @@ function normalizeName(path: string) {
   return name.replace(/\.[^/.]+$/, "");
 }
 
-function getMetadata(fileName: string) {
-  // 메타데이터 파일명 구성 (같은 이름의 .json 찾기)
-  const metaKey = `./img_art/${fileName}.json`;
-
-  if (metadataModules[metaKey]) {
-    return metadataModules[metaKey].default;
+function getCategoryValue(categoryString: string | undefined): Category {
+  switch (categoryString?.toUpperCase()) {
+    case "PAINTING":
+      return Category.PAINTING;
+    case "DRAWING":
+      return Category.DRAWING;
+    case "DIGITAL":
+      return Category.DIGITAL;
+    case "SCULPTURE":
+      return Category.SCULPTURE;
+    case "ALL":
+      return Category.ALL;
+    default:
+      return Category.PAINTING; // 기본값
   }
+}
 
-  return null;
+function getMetadata(baseFileName: string) {
+  const metadataPath = `./src/assets/img_art/${baseFileName}.json`;
+  const metadataFile = metadataModules[metadataPath];
+  return metadataFile?.default;
 }
 
 export const INITIAL_ARTWORKS: Artwork[] = Object.keys(imageModules).map(
@@ -35,7 +47,7 @@ export const INITIAL_ARTWORKS: Artwork[] = Object.keys(imageModules).map(
     return {
       id: String(idx + 1),
       title: metadata?.title || baseFileName,
-      category: metadata?.category || Category.PAINTING,
+      category: getCategoryValue(metadata?.category) || Category.PAINTING,
       year: metadata?.year || "",
       medium: metadata?.medium || "",
       dimensions: metadata?.dimensions || "",
