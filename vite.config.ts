@@ -10,7 +10,7 @@ export default defineConfig({
     outDir: "dist",
   },
   // 빌드 시 process.env.API_KEY를 실제 값으로 치환하도록 정의합니다.
-  define: {
+  /* define: {
     "process.env.API_KEY": JSON.stringify(process.env.API_KEY),
-  },
+  }, */
 });
