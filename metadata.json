@@ -1,0 +1,7 @@
+{
+  "name": "시안 갤러리 안선영 화백",
+  "description": "A sophisticated, minimalist portfolio for a professional artist featuring a masonry gallery, AI-powered artwork analysis, and an interactive art assistant.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
