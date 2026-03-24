@@ -7,7 +7,7 @@ export enum Category {
 }
 
 export const CategoryLabels: Record<Category, string> = {
-  [Category.PAINTING]: "회화",
+  [Category.PAINTING]: "작품",
   [Category.DRAWING]: "프로필",
   [Category.DIGITAL]: "디지털",
   [Category.SCULPTURE]: "조각",

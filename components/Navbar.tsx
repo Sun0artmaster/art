@@ -13,10 +13,10 @@ const Navbar: React.FC<Props> = ({ currentFilter, onFilterChange }) => {
         <div className="flex flex-col md:flex-row justify-between items-center py-4 md:h-24 gap-4 md:gap-0">
           <div className="flex-shrink-0">
             <h1
-              className="text-2xl font-bold tracking-widest uppercase cursor-pointer"
+              className="text-4xl font-bold tracking-widest uppercase cursor-pointer"
               onClick={() => onFilterChange(Category.ALL)}
             >
-              안선영 화백
+              Syahn Art Gallery
             </h1>
           </div>
 
@@ -26,7 +26,7 @@ const Navbar: React.FC<Props> = ({ currentFilter, onFilterChange }) => {
               <button
                 key={cat}
                 onClick={() => onFilterChange(cat)}
-                className={`text-[11px] uppercase tracking-[0.2em] font-semibold transition-all duration-300 pb-1 border-b-2 ${
+                className={`text-[13px] uppercase tracking-[0.2em] font-semibold transition-all duration-300 pb-1 border-b-2 ${
                   currentFilter === cat
                     ? "border-black text-black"
                     : "border-transparent text-gray-400 hover:text-gray-600"
